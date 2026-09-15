@@ -10,7 +10,7 @@ A single-page, offline-capable personal help guide in Spanish, designed for mobi
 
 ## Contents
 
-Seven collapsible sections with check-off steps and a progress bar: immigration legal resources (Louisville, KY), debt and credit card plan, honest income paths, weekly budget tracker, secure document checklist (including immigration case number), know-your-rights information, and mental health / community support — plus the original ballad *"O, Hache, Eme"* with an offline audio player.
+Seven collapsible sections with check-off steps and a progress bar: immigration legal resources (Louisville, KY), debt and credit card plan, honest income paths, weekly budget tracker, secure document checklist (including immigration case number), know-your-rights information, and mental health / community support — plus the original ballad *"The Other Side of Yesterday"* with an offline audio player.
 
 ## Files
 
