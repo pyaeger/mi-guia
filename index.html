@@ -173,6 +173,11 @@
   /* ================= Campos editables ================= */
   .dato{display:flex;align-items:center;gap:8px;margin-top:8px}
   .dato .etiqueta{font-size:.9rem;font-weight:600;flex-shrink:0}
+  .llamar{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;min-height:46px;padding:10px 16px;
+    border:none;border-radius:12px;background:var(--verde);color:#fff;font:inherit;font-size:.95rem;
+    font-weight:700;text-decoration:none;cursor:pointer;white-space:nowrap}
+  .llamar:active{filter:brightness(.92)}
+  .llamar[hidden]{display:none}
   .dato input{
     flex:1;font:inherit;font-size:1rem;
     padding:12px 14px;
@@ -444,7 +449,7 @@
         <h4>⚖️ Maxwell Street Legal Clinic</h4>
         <p class="suave">Clínica legal sin fines de lucro, especializada en casos de inmigración. Queda en Lexington y atiende a todo Kentucky por teléfono.</p>
         <div class="dato"><span class="etiqueta">☎️</span><input data-guardar="tel-maxwell" value="859-233-3840" placeholder="[ ESCRIBE AQUÍ EL TELÉFONO ]" inputmode="tel"></div>
-        <div class="dato"><span class="etiqueta">🌐</span><input data-guardar="web-maxwell" value="kyequaljustice.org/maxlegalaid" placeholder="[ ESCRIBE AQUÍ EL SITIO WEB ]"></div>
+        <div class="dato"><span class="etiqueta">🌐</span><input data-guardar="web-maxwell" value="immigrationlawhelp.org" placeholder="[ ESCRIBE AQUÍ EL SITIO WEB ]"></div>
       </div>
 
       <div class="tarjeta nota">
@@ -732,6 +737,8 @@
       <div class="tarjeta">
         <h4>📞 Si un día es muy pesado</h4>
         <p>La línea <strong>988</strong> escucha en español, gratis y confidencial, a cualquier hora: marca <strong>988</strong> y oprime <strong>2</strong> para español. No preguntan estatus migratorio.</p>
+        <p>Si no quieres hablar, puedes escribir: manda un mensaje de texto al <strong>988</strong> con la palabra <strong>Ayuda</strong>.</p>
+        <div class="dato"><a class="llamar" href="tel:988">📞 Llamar al 988</a></div>
       </div>
 
       <div class="tarjeta">
@@ -835,6 +842,31 @@
     var guardado = leer(clave, null);
     if (guardado !== null) inp.value = guardado; /* si no hay nada guardado, queda el valor pre-escrito del HTML */
     inp.addEventListener("input", function(){ guardar(clave, inp.value); });
+  });
+
+  /* ---- Botón de llamar junto a cada teléfono ----
+     El número se puede editar, así que el botón lee el valor actual del campo
+     cada vez que cambia. Toma solo los dígitos, ignorando texto como
+     "(inmigración: ext. 586)". Si el campo queda vacío, el botón se esconde. */
+  document.querySelectorAll('input[data-guardar^="tel-"]').forEach(function(inp){
+    var boton = document.createElement("a");
+    boton.className = "llamar";
+    boton.textContent = "\uD83D\uDCDE Llamar";
+    boton.setAttribute("aria-label", "Llamar a este número");
+    inp.parentNode.appendChild(boton);
+    function refrescar(){
+      /* Toma el primer número completo que aparezca y para ahí. El campo puede
+         decir "502-479-9180 (inmigración: ext. 586)": marcar la extensión pegada
+         al número daría un número equivocado. Acepta (502) 637-9097, 502.479.9180,
+         1-800-898-7180 y +1 859 233 3840. */
+      var m = (inp.value || "").match(/\+?\s*1?[\s.\-]*\(?\d{3}\)?[\s.\-]*\d{3}[\s.\-]*\d{4}/);
+      var digitos = m ? m[0].replace(/[^0-9+]/g, "") : "";
+      if (digitos.length < 7 || digitos.length > 15){ boton.hidden = true; boton.removeAttribute("href"); return; }
+      boton.hidden = false;
+      boton.href = "tel:" + digitos;
+    }
+    inp.addEventListener("input", refrescar);
+    refrescar();
   });
 
   /* ---- Deudas ---- */
