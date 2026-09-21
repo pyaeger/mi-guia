@@ -18,4 +18,21 @@ Seven collapsible sections with check-off steps and a progress bar: immigration 
 - `sw.js` — service worker for offline caching
 - `o-hache-eme.mp3` — original song, playable offline
 
-This project was moved out of [`keons-playlist`](https://github.com/pyaeger/keons-playlist) into its own repository; the old URL redirects here. Because both live on the same `pyaeger.github.io` origin, users' saved data survived the move.
+## Verification
+
+**[mi-guia-verification.md](mi-guia-verification.md)** records every phone number
+and web address in the app, checked 2026-09-21 against each organisation's own
+site or an independent legal-services directory, with a confidence grade each.
+One address was dead and has been corrected; one extension could not be
+confirmed and is marked as such.
+
+## History
+
+This project was moved out of the repository now called
+[`far-field`](https://github.com/pyaeger/far-field) into its own. Because both
+live on the same `pyaeger.github.io` origin, users' saved data survived the move.
+
+**The old link no longer works.** `pyaeger.github.io/keons-playlist/guia.html`
+returned a redirect stub until that repository was renamed on 2026-09-21;
+GitHub does not redirect Pages URLs across a rename, so it now returns 404.
+Anyone holding the original link needs the new one.
