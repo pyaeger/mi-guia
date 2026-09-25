@@ -17,6 +17,7 @@ Seven collapsible sections with check-off steps and a progress bar: immigration 
 - `index.html` — the entire app (markup, styles, logic)
 - `sw.js` — service worker for offline caching
 - `o-hache-eme.mp3` — original song, playable offline
+- `LICENSE` — MIT
 
 ## Verification
 
@@ -36,3 +37,20 @@ live on the same `pyaeger.github.io` origin, users' saved data survived the move
 returned a redirect stub until that repository was renamed on 2026-09-21;
 GitHub does not redirect Pages URLs across a rename, so it now returns 404.
 Anyone holding the original link needs the new one.
+
+## License
+
+**MIT**, covering everything here — `index.html`, `sw.js`, the README, the
+verification file, and the ballad *"The Other Side of Yesterday"*.
+
+The track was generated with Suno under a Pro subscription, and Suno's terms
+give Pro subscribers ownership of what they make, so it is licensed on the same
+terms as the code.
+
+**Separately from the licence: the contact data is reproduced, not authored.**
+The organisation names, phone numbers and web addresses are public information
+published by those organisations. They carry no warranty beyond what
+[mi-guia-verification.md](mi-guia-verification.md) records for a given date.
+Re-check before relying on them.
+
+Full terms in [LICENSE](LICENSE).
